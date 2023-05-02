@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+
+int main()
+{
+    float num;
+    int num_int;
+    printf("Enter a floating-point number: ");
+    scanf("%f", &num);
+    num_int = (int) num;
+    printf("The integer value of %.2f is %d.\n", num, num_int);
+
+
+
+ 
+    switch(num_int) 
+    {
+        case 1:
+            printf("Very bad.\n");
+            break;      
+        case 2:
+            printf("Bad.\n");
+            break;
+        case 3:
+            printf("Neutral.\n");
+            break;
+        case 4:
+            printf("Good.\n");
+            break;
+        case 5:
+            printf("Very good.\n");
+            break;
+        default:
