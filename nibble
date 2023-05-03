@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("ingrese un numero entero menor a 256: ");
+    scanf("%d", &num);
+    printf("H nibble: %d\nL nibble: %d\n", (num >> 4) & 0xF, num & 0xF);
+    return 0;
+}
+
