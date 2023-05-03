@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() 
+{
+    char str[100]; // declare a string big enough to hold long words
+    char reversed_str[100];
+    int i, j, len;
+
+    // prompt the user to enter a word
+    printf("Enter a word: ");
+    scanf("%s", str);
+
+    // find the length of the input word
+    len = strlen(str);
+
+    // reverse the input word
+    for (i = len - 1, j = 0; i >= 0; i--, j++) {
+        reversed_str[j] = str[i];
+    }
+    reversed_str[len] = '\0';
+
+    // print the palindrome of the input word
+    printf("The palindrome of the word %s is %s\n", str, reversed_str);
+
+    return 0;
+}
