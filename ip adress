@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char num1[4], num2[4], num3[4], num4[4];
+    printf("Please enter the four numbers for the IP address:\n");
+    scanf("%s%s%s%s", num1, num2, num3, num4);
+    char ip_address[16];
+    sprintf(ip_address, "%s.%s.%s.%s", num1, num2, num3, num4);
+    printf("The IP address is: %s\n", ip_address);
+    return 0;
+}
