@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int n = 10;
+    int fib[n], i;
+
+    // Initialize the first two elements of the Fibonacci sequence
+    fib[0] = 0;
+    fib[1] = 1;
+
+    // Generate the Fibonacci sequence
+    for(i = 2; i < n; i++) {
+        fib[i] = fib[i-1] + fib[i-2];
+    }
+
+    // Print the first ten numbers of the Fibonacci sequence
+    printf("The first ten numbers of the Fibonacci sequence are:\n");
+    for(i = 0; i < n; i++) {
+        printf("%d ", fib[i]);
+    }
+    printf("\n");
+
+    // Print the odd numbers of the Fibonacci sequence
+    printf("The odd numbers of the Fibonacci sequence are:\n");
+    for(i = 0; i < n; i += 2) {
+        printf("%d ", fib[i]);
+    }
+    printf("\n");
+
+    // Print the even numbers of the Fibonacci sequence
+    printf("The even numbers of the Fibonacci sequence are:\n");
+    for(i = 1; i < n; i += 2) {
+        printf("%d ", fib[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
