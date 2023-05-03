@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    char *days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    int day_number;
+
+    printf("Enter a number (0-6) for the day of the week: ");
+    scanf("%d", &day_number);
+
+    if (day_number >= 0 && day_number < 7) {
+        printf("The day of the week is %s (with pointer arithmetic)\n", *(days + day_number));
+        printf("The day of the week is %s (with array indexing)\n", days[day_number]);
+    } else {
+        printf("Error, no such day.\n");
+    }
+
+    return 0;
+}
+/*Write a program that asks the user to enter a number, and prints which day of the week that number corresponds to. The days are indexed from 0 (Sunday) to 6 (Saturday).
+
+Store the names of the days in an array and print the name of the day in two ways:
+
+with pointer arithmetic;
+with array indexing.
+Before the program gets a value from the array, it must first check if the given day is greater than or equal to zero and less than 7. If not, it should print the message: Error, no such day..
+
+Your version of the program must print the same result as the expected output.
+
+
+
+
