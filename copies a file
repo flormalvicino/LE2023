@@ -1,0 +1,61 @@
+#define SOURCE_FILENAME "source.txt"
+#define DESTINATION_FILENAME "destination.txt"
+#define MAX_FILE_ATTEMPTS 100
+
+int main() {
+    FILE *sourceFile, *destinationFile;
+    sourceFile = fopen(SOURCE_FILENAME, "r");
+
+    if (sourceFile == NULL) {
+        printf("Error opening source file.\n");
+        return 1;
+    }
+
+    int attempt = 0;
+    char newDestinationFilename[50];
+    while (attempt < MAX_FILE_ATTEMPTS) {
+        if (attempt == 0) {
+            destinationFile = fopen(DESTINATION_FILENAME, "r");
+        } else {
+            sprintf(newDestinationFilename, "destination_%d.txt", attempt);
+            destinationFile = fopen(newDestinationFilename, "r");
+        }
+
+        if (destinationFile == NULL) {
+            break;
+        }
+
+        fclose(destinationFile);
+        attempt++;
+    }
+
+    if (attempt == MAX_FILE_ATTEMPTS) {
+        printf("File count limit reached.\n");
+        fclose(sourceFile);
+        return 1;
+    }
+
+    if (attempt == 0) {
+        destinationFile = fopen(DESTINATION_FILENAME, "w");
+    } else {
+        destinationFile = fopen(newDestinationFilename, "w");
+    }
+
+    if (destinationFile == NULL) {
+        printf("Error opening destination file.\n");
+        fclose(sourceFile);
+        return 1;
+    }
+
+    char ch;
+    while ((ch = fgetc(sourceFile)) != EOF) {
+        fputc(ch, destinationFile);
+    }
+
+    fclose(sourceFile);
+    fclose(destinationFile);
+
+    printf("File copied successfully.\n");
+
+    return 0;
+}
