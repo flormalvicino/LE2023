@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function declaration for checking a valid IP address
+int isValidIPAddress(const char* ipAddress);
+
+// Function declaration for printing the validation message
+void printValidationMessage(const char* ipAddress);
+
+int main() {
+    const char* ipAddress1 = "127.0.0.1";
+    const char* ipAddress2 = "a.b.c.d";
+
+    printValidationMessage(ipAddress1);
+    printValidationMessage(ipAddress2);
+
+    return 0;
+}
+
+// Function definition for checking a valid IP address
+int isValidIPAddress(const char* ipAddress) {
+    int numParts = 0;
+    char* part = strtok((char*)ipAddress, ".");
+    while (part != NULL) {
+        int value = atoi(part);
+        if (value < 0 || value > 255) {
+            return 0;
+        }
+        numParts++;
+        part = strtok(NULL, ".");
+    }
+
+    return (numParts == 4);
+}
+
+// Function definition for printing the validation message
+void printValidationMessage(const char* ipAddress) {
+    if (isValidIPAddress(ipAddress)) {
+        printf("%s is a valid IP address.\n", ipAddress);
+    } else {
+        printf("%s is not a valid IP address.\n", ipAddress);
+    }
+}
+
+
+
+
+
+
