@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char* argv[]) {
+    if (argc != 4) {
+        printf("Wrong parameters.\n");
+        return 0;
+    }
+
+    char* operation = argv[1];
+    int operand1 = atoi(argv[2]);
+    int operand2 = atoi(argv[3]);
+
+    if (strcmp(operation, "add") == 0) {
+        int result = operand1 + operand2;
+        printf("Result: %d\n", result);
+    } else if (strcmp(operation, "sub") == 0) {
+        int result = operand1 - operand2;
+        printf("Result: %d\n", result);
+    } else if (strcmp(operation, "mul") == 0) {
+        int result = operand1 * operand2;
+        printf("Result: %d\n", result);
+    } else {
+        printf("Wrong parameters.\n");
+    }
+
+    return 0;
+}
