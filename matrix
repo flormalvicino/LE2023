@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+// Function declaration for checking which matrix is greater
+int compareMatrices(const int* matrixA, const int* matrixB, int size);
+
+// Function declaration for printing the comparison result
+void printComparisonResult(const int* matrixA, const int* matrixB, int size);
+
+int main() {
+    int matrix1[] = {1, 2, 3, 4};
+    int matrix2[] = {2, 3, 4, 5};
+    int matrix3[] = {1, 2, 3, 4};
+    int matrix4[] = {1, 2, 4, 4};
+    int matrix5[] = {1, 2, 3, 4};
+    int matrix6[] = {1, 2, 3, 5};
+
+    printComparisonResult(matrix1, matrix2, 4);
+    printComparisonResult(matrix3, matrix4, 4);
+    printComparisonResult(matrix5, matrix6, 4);
+
+    return 0;
+}
+
+// Function definition for checking which matrix is greater
+int compareMatrices(const int* matrixA, const int* matrixB, int size) {
+    for (int i = 0; i < size * size; i++) {
+        if (matrixA[i] < matrixB[i]) {
+            return -1;
+        } else if (matrixA[i] > matrixB[i]) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// Function definition for printing the comparison result
+void printComparisonResult(const int* matrixA, const int* matrixB, int size) {
+    int comparisonResult = compareMatrices(matrixA, matrixB, size);
+    if (comparisonResult == -1) {
+        printf("Matrix A is smaller than Matrix B.\n");
+    } else if (comparisonResult == 1) {
+        printf("Matrix A is greater than Matrix B.\n");
+    } else {
+        printf("Both matrices are equal.\n");
+    }
+}
+/*Write a function that checks which of two given matrices is greater. To simplify the function parameter list, you can assume that both matrices are equal in size and are square.
+
+This function should return:
+
+1 if the first matrix is greater than the second;
+-1 if the first matrix is smaller than the second;
+0 if both matrices are equal - this means they have exactly the same values.
+For this task, we assume that a matrix is smaller than another matrix when the first element which is different is smaller in that matrix.
+
+We analyze matrices from left to right and from top to bottom. Separate the declaration of the function from its full definition.
+
+Write a second function that calls the first one and then prints an appropriate message: matrixA is smaller than matrixB, matrixA is greater than matrixB, or Both matrices are equal.
+
+Write a code to test it with some values - create three matrices, fill them with values and compare them in all possible (six) cases. Call a second function. As always, do not limit yourself only to the cases already given.
+
+Note: you can use a single pointer to int type to pass the array.
+
