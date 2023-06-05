@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+// Structure definition for a person
+struct Person {
+    char firstName[20];
+    char lastName[20];
+};
+
+int main() {
+    // Declare an array of Person structures
+    struct Person people[4];
+
+    // Initialize the values of the people
+    strcpy(people[0].firstName, "Mary");
+    strcpy(people[0].lastName, "Smith");
+
+    strcpy(people[1].firstName, "James");
+    strcpy(people[1].lastName, "Johnson");
+
+    strcpy(people[2].firstName, "Patricia");
+    strcpy(people[2].lastName, "Williams");
+
+    strcpy(people[3].firstName, "John");
+    strcpy(people[3].lastName, "Brown");
+
+    // Print each person's name on a separate line
+    for (int i = 0; i < 4; i++) {
+        printf("%s %s\n", people[i].firstName, people[i].lastName);
+    }
+
+    return 0;
+}
+
+
+
